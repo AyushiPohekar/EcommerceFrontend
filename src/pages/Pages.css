@@ -1,0 +1,47 @@
+/***************************** pagenotfound *************************************/
+.pageNotFoundCpontainer{
+    margin: auto ;
+    margin-top: 80px;
+   gap: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+   
+}
+.pageNotFoundCpontainer h1{
+    text-align: center;
+}
+.pageNotFoundCpontainer p{
+    font-weight: bold;
+}
+
+.pageNotFoundCpontainer button{
+    background-color: #FB2576;
+    padding: 6px 7px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+/***************************************** Contact ********************************************************/
+.ContactUs{
+    margin-top:8%;
+    
+}
+
+.ContactUsRight{
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-left: 5rem;
+    width: 80%;
+   
+}
+.ContactUsTitle{
+    text-align: center;
+    background-color: #FB2576;
+    color: white;
+}

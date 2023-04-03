@@ -38,3 +38,6 @@ padding: 1px;
  
   color: #FB2576;
 }
+.navbar-brand:hover{
+  color: #3F0071;
+}
