@@ -1,0 +1,28 @@
+/* #3F0071--purple
+#FB2576--pink
+#332FD0--lightblue
+#0002A1 --dark blue*/
+
+/* #FB2576--pink
+#3F0071--purple
+#150050--darkblue
+#000000--black */
+
+
+
+
+/*********************************************Footer ****************************************************/
+.FooterContainer{
+    background-color:#3F0071 ;
+    color: white;
+    padding: 2rem;
+   text-align: center;
+}
+.footerlinks a{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+.footerlinks a:hover{
+    color:#c08eea ;
+}

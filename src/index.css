@@ -1,13 +1,40 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Poppins:ital,wght@0,400;0,500;1,300&display=swap');
+
+/* font-family: 'Playfair Display', serif;
+font-family: 'Poppins', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
+/* font-family: 'Fruktur', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+/* font-family: 'Itim', cursive; */
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding:0;
+  box-sizing:border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbar{
+font-family: 'Poppins', sans-serif; 
+font-size: 17px;
+line-height: 26px;
+text-transform: uppercase;
+box-shadow: 0 8px 8px -6px #3F0071;
+--webkit-box-shadow:0 8px 8px -6px #3F0071;
+border-bottom: 0.3px solid #3F0071;
+padding: 1px;
+
+}
+.nav-link{
+ font-weight: 300 !important;
+}
+.active{
+  border-bottom: 1px solid black;
+}
+.navbar-brand{
+  padding: 1rem;
+  font-family: 'Itim', cursive;
+  font-size: 2.5rem;
+  text-transform: capitalize;
+ 
+  color: #FB2576;
 }
