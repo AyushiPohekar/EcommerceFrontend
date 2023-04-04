@@ -26,10 +26,10 @@
 }
 
 /***************************************** Contact ********************************************************/
-.ContactUs{
-    margin-top:8%;
+/* .ContactUs{
+    margin-top:2%;
     
-}
+} */
 
 .ContactUsRight{
     margin-top: 3.5rem;
@@ -44,4 +44,20 @@
     text-align: center;
     background-color: #FB2576;
     color: white;
+}
+
+/******************************************* Register Page *******************************************************/
+.registerContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    flex-direction: column;
+    
+
+}
+.Registerbtn{
+    background-color: #FB2576;
+    border: none;
+    padding: 0.5rem 3rem;
 }

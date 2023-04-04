@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const PageNotFound = () => {
   const navigate=useNavigate();
   return (
-    <Layout>
+    <Layout title={'Go Back-404'}>
     <div className='pageNotFoundCpontainer'>
     <h1 >404</h1>
     <p >It seems that you are lost in perpetual black hole. let us help guide you out and get back you to home page</p>
