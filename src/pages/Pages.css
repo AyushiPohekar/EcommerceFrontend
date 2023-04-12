@@ -26,18 +26,31 @@
 }
 
 /***************************************** Contact ********************************************************/
-/* .ContactUs{
-    margin-top:2%;
-    
-} */
-
-.ContactUsRight{
-    margin-top: 3.5rem;
+.ContactUs{
+    scrollbar-width :none; 
+  
+    overflow-y: scroll;
+}
+.ContactUs::-webkit-scrollbar{
+    display: none;
+   
+}
+.ContactUsRightdiv{
+    display: flex;
+  height: 60%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-left: 5rem;
-    width: 80%;
+    width: 100%;
+
+
+}
+.ContactUsRight{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    gap: 3rem;
+
+
    
 }
 .ContactUsTitle{

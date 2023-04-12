@@ -1,10 +1,25 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Layout.css";
-import {RiShoppingBag3Fill} from 'react-icons/ri'
+import { RiShoppingBag3Fill } from "react-icons/ri";
+import { useAuth } from "../Context/auth";
+import { toast } from "react-toastify";
 
 
 const Header = () => {
+  const navigate=useNavigate();
+  const [auth, setAuth] = useAuth();
+  const handleLogout=()=>{
+    setAuth({
+      ...auth,
+      user:null,
+  token:""
+    })
+    localStorage.removeItem('auth')
+  
+   toast.success("Logout Success")
+   
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg headerContainer">
@@ -21,40 +36,47 @@ const Header = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to={'/'} className="navbar-brand headerlinks" >
-             <RiShoppingBag3Fill/> YourShop
+            <Link to={"/"} className="navbar-brand headerlinks">
+              <RiShoppingBag3Fill /> YourShop
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink to={'/'}
-                  className="nav-link  headerlinks"
-                 >
+                <NavLink to={"/"} className="nav-link  headerlinks">
                   Home
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to={'/category'}
-                  className="nav-link  headerlinks"
-                 >
-                Category
+                <NavLink to={"/category"} className="nav-link  headerlinks">
+                  Category
                 </NavLink>
               </li>
+              {!auth.user ? (
+                <>
+                  <li className="nav-item">
+                    <NavLink to={"/register"} className="nav-link headerlinks">
+                      Register
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to={"/login"} className="nav-link headerlinks">
+                      Login
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                <li className="nav-item">
+                <NavLink onClick={handleLogout} to={"/login"}  className="nav-link headerlinks">
+                  Logout
+                </NavLink>
+              </li>
+                </>
+              )}
               <li className="nav-item">
-                <NavLink to={'/register'} className="nav-link headerlinks" >
-                 Register
+                <NavLink to={"/cart"} className="nav-link headerlinks">
+                  cart{0}
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to={'/login'} className="nav-link headerlinks">
-                  Login
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to={'/cart'} className="nav-link headerlinks" >
-                cart{0}
-                </NavLink>
-              </li>
-           
             </ul>
           </div>
         </div>
