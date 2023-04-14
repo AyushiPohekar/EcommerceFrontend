@@ -1,3 +1,9 @@
+
+
+
+
+
+
 /***************************** pagenotfound *************************************/
 .pageNotFoundCpontainer{
     margin: auto ;
@@ -66,11 +72,27 @@
     justify-content: center;
     height: 70vh;
     flex-direction: column;
-    
+    scrollbar-width :none; 
+  
+    overflow-y: scroll;
 
 }
 .Registerbtn{
     background-color: #FB2576;
     border: none;
     padding: 0.5rem 3rem;
+    width:215px;
+    margin-bottom: 1rem;
+}
+.registerform{
+   height:50vh;
+  margin-top: 0px;
+
+}
+
+.forgot-btn{
+    background-color: rgb(214, 211, 211);
+    border: none;
+    padding: 0.5rem 3rem;
+    
 }

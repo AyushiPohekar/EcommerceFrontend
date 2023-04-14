@@ -12,11 +12,12 @@ const Register = () => {
     const[password,setPassword]=useState("");
     const[phone,setPhone]=useState("");
     const[address,setAddress]=useState("");
+    const[answer,setAnswer]=useState("");
     const navigate=useNavigate();
 
     const handleSubmit=async(e)=>{
    e.preventDefault();
-   console.log(name,email,password,phone,address);
+   console.log(name,email,password,phone,address,answer);
 
    try {
     const res = await axios.post("/api/v1/auth/register", {
@@ -24,8 +25,8 @@ const Register = () => {
       email,
       password,
       phone,
-      address
-     
+      address,
+     answer
     });
     if (res && res.data.success) {
         toast.success(res.data && res.data.message);
@@ -48,7 +49,7 @@ const Register = () => {
   return (
     <Layout title={"Register-Ecommerce App"}>
       <div className="registerContainer">
-        <form style={{width:"30%"}} onSubmit={handleSubmit}>
+        <form style={{width:"35%"}} onSubmit={handleSubmit} className="registerform">
           <div className="mb-3">
             <label htmlFor="exampleInputname" className="form-label">
               Name
@@ -115,9 +116,22 @@ const Register = () => {
               required
             />
           </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputanswer" className="form-label">
+             What is your favourite food?
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputanswer"
+              value={answer}
+              onChange={(e)=>{setAnswer(e.target.value)}}
+              required
+            />
+          </div>
 
           <button type="submit" className="btn btn-primary Registerbtn">
-            Submit
+          REGISTER
           </button>
         </form>
       </div>

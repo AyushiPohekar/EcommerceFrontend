@@ -1,0 +1,29 @@
+.AdminDasboardContainer{
+ 
+    border-radius: 20px;
+    height: 70vh;
+   margin: 2rem 2rem;
+}
+
+.AdminDasboardConlumnLeft{
+    padding: 1rem;
+    height: 70vh;
+    background-color: #3F0071;
+    color: white;
+    border-radius: 20px;
+}
+.adminlistGroup{
+    background-color: #3F0071;
+   color: white;
+   border: none;
+}
+.adminlistGroup.active{
+    background-color:white;
+    color: black;
+    width: 100%;
+    border-radius: 5px;
+}
+.adminlistGroup::hover{
+ 
+    border-radius: 5px;
+}

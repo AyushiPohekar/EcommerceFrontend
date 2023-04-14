@@ -32,9 +32,7 @@ const Login = () => {
         });
         localStorage.setItem('auth',JSON.stringify(res.data))
         navigate(location.state || "/");
-        setTimeout(() => {
-          navigate("/");
-        }, 5000);
+       
       } else {
         toast.error(res.data.message);
       }
@@ -77,6 +75,18 @@ const Login = () => {
               }}
               required
             />
+          </div>
+
+          <div className="mb-3">
+            <button
+              type="button"
+              className="btn forgot-btn"
+              onClick={() => {
+                navigate("/forgot-password");
+              }}
+            >
+              Forgot Password
+            </button>
           </div>
 
           <button type="submit" className="btn btn-primary Registerbtn">

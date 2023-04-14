@@ -1,0 +1,29 @@
+.UserDasboardContainer{
+ 
+    border-radius: 20px;
+    height: 70vh;
+   margin: 2rem 2rem;
+}
+
+.UserDasboardConlumnLeft{
+    padding: 1rem;
+    height: 70vh;
+    background-color: #3F0071;
+    color: white;
+    border-radius: 20px;
+}
+.UserlistGroup{
+    background-color: #3F0071;
+   color: white;
+   border: none;
+}
+.UserlistGroup.active{
+    background-color:white;
+    color: black;
+    width: 100%;
+    border-radius: 5px;
+}
+.UserlistGroup::hover{
+ 
+    border-radius: 5px;
+}
