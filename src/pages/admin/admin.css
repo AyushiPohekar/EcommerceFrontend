@@ -3,6 +3,17 @@
     border-radius: 20px;
     height: 70vh;
    margin: 2rem 2rem;
+   scrollbar-width :none; 
+  
+   overflow-y: scroll;
+}
+.AdminDasboardRow{
+
+    width: 90%;
+   display: flex;
+   flex-direction: row;
+   gap: 2rem;
+   
 }
 
 .AdminDasboardConlumnLeft{
@@ -12,6 +23,13 @@
     color: white;
     border-radius: 20px;
 }
+.AdminDasboardConlumnRight{
+    background-color: red;
+    scrollbar-width :none; 
+  
+    overflow-y: scroll;
+}
+
 .adminlistGroup{
     background-color: #3F0071;
    color: white;
@@ -24,6 +42,9 @@
     border-radius: 5px;
 }
 .adminlistGroup::hover{
- 
+    color: black;
     border-radius: 5px;
+}
+.adminlistGroup h4{
+    cursor: pointer;
 }
