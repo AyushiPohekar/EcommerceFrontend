@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom'
-import '../../pages/admin/admin.css'
+import '../../pages/admin/admin.css';
+import { Toast } from 'react-hot-toast';
 const AdminMenu = () => {
   const navigate=useNavigate();
+
   return (
     <>
     <div className="list-group adminlistGroup">
@@ -10,6 +13,7 @@ const AdminMenu = () => {
    <hr />
     <NavLink to="/dashboard/admin/create-category" className="list-group-item list-group-item-action adminlistGroup">Create Category</NavLink>
     <NavLink to="/dashboard/admin/create-product" className="list-group-item list-group-item-action adminlistGroup">Create Product</NavLink>
+    <NavLink to="/dashboard/admin/products" className="list-group-item list-group-item-action adminlistGroup">Products</NavLink>
     <NavLink to="/dashboard/admin/users" className="list-group-item list-group-item-action adminlistGroup">Users</NavLink>
   
   </div>

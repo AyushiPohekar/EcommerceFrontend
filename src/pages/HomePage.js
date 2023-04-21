@@ -1,15 +1,147 @@
-import React from 'react'
-import Layout from '../components/Layout/Layout'
-import { useAuth } from '../components/Context/auth'
+import React, { useEffect, useState } from "react";
+import Layout from "../components/Layout/Layout";
+import { useAuth } from "../components/Context/auth";
+import { Checkbox, Radio } from "antd";
+import axios from "axios";
+import { Prices } from "../components/Prices";
 
 const HomePage = () => {
-  const [auth,setAuth]=useAuth()
-  return (
-    <Layout title={'Ecommerce'}>
-    <h1>HomePage</h1>
-    <pre>{JSON.stringify(auth,null,4)}</pre>
-    </Layout>
-  )
-}
+  const [auth, setAuth] = useAuth();
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [checked, setChecked] = useState([]);
+  const [radio, setRadio] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-export default HomePage
+
+  console.log(products);
+  //get all category
+  const getAllCategory = async () => {
+    try {
+      const { data } = await axios.get("/api/v1/category/getallcategory");
+      if (data?.success) {
+        setCategories(data?.category);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getAllCategory();
+  }, []);
+
+  //get products
+  const getAllProducts = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
+        `http://localhost:8080/api/v1/product/get-product`
+      );
+      setLoading(false);
+      setProducts(data.products);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
+   // filter by cat
+   const handleFilter = (value, id) => {
+    let all = [...checked];
+    if (value) {
+      all.push(id);
+    } else {
+      all = all.filter((c) => c !== id);
+    }
+    setChecked(all);
+  };
+  useEffect(() => {
+    if (!checked.length || !radio.length) getAllProducts();
+  }, [checked.length, radio.length]);
+
+  useEffect(() => {
+    if (checked.length || radio.length) filterProduct();
+  }, [checked, radio]);
+
+    //get filterd product
+    const filterProduct = async () => {
+      try {
+        const { data } = await axios.post("/api/v1/product/product-filters", {
+          checked,
+          radio,
+        });
+        setProducts(data?.products);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+  return (
+    <Layout title={"Ecommerce"}>
+      <div className="row mt-3">
+        <div className="col-md-3">
+          <h4> Filter By Category</h4>
+          <div className="d-flex flex-column">
+          {categories?.map((c) => (
+            <Checkbox
+              key={c._id}
+              onChange={(e) => handleFilter(e.target.checked, c._id)}
+            >
+              {c.name}
+            </Checkbox>
+          ))}
+        </div>
+        {/* price filter */}
+        <h4 className="text-center mt-4">Filter By Price</h4>
+        <div className="d-flex flex-column">
+          <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+            {Prices?.map((p) => (
+              <div key={p._id}>
+                <Radio value={p.array}>{p.name}</Radio>
+              </div>
+            ))}
+          </Radio.Group>
+        </div>
+        </div>
+        <div className="col-md-9 homepageproductlistdivright">
+        {JSON.stringify(radio,null,4)}
+          <h1 className="text-center">All Products List</h1>
+          <div className="d-flex flex-wrap homepageproductlist">
+            {products?.map((p) => {
+              return (
+                <>
+                  <div
+                    className="card productcard"
+                    style={{ width: "18rem" }}
+                    key={p._id}
+                  >
+                    <img
+                      src={`/api/v1/product/product-photo/&#x20B9;{p._id}`}
+                      className="card-img-top productcardimg"
+                      alt={p.name}
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">{p.name}</h5>
+                      <div className="classbodydowndiv">
+                        <p>&#x20B9;{p.price}</p>
+                        <button className="addtocartbtn">Add to Cart</button>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
+          </div>
+          
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default HomePage;

@@ -96,3 +96,32 @@
     padding: 0.5rem 3rem;
     
 }
+
+.homepageproductlistdivright{
+  
+    scrollbar-width :none; 
+  
+    overflow-y: scroll;
+
+}
+.classbodydowndiv{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.homepageproductlist{
+    gap:1rem;
+  
+padding-left: 2rem;
+margin-bottom: 2rem;
+
+}
+.addtocartbtn{
+    background-color: white;
+    color: #FB2576;
+    border: 1px solid #FB2576;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+}
