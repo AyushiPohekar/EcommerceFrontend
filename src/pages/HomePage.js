@@ -4,8 +4,10 @@ import { useAuth } from "../components/Context/auth";
 import { Checkbox, Radio } from "antd";
 import axios from "axios";
 import { Prices } from "../components/Prices";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate=useNavigate();
   const [auth, setAuth] = useAuth();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -16,6 +18,9 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
 
   console.log(products);
+
+
+
   //get all category
   const getAllCategory = async () => {
     try {
@@ -129,9 +134,9 @@ const HomePage = () => {
           <h4 className="text-center mt-4">Filter By Price</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-              {Prices?.map((p) => (
-                <div key={p._id}>
-                  <Radio value={p.array}>{p.name}</Radio>
+              {Prices?.map((pr) => (
+                <div >
+                  <Radio value={pr.array}>{pr.name}</Radio>
                 </div>
               ))}
             </Radio.Group>
@@ -155,11 +160,15 @@ const HomePage = () => {
                     className="card productcard"
                     style={{ width: "18rem" }}
                     key={p._id}
+                  
                   >
                     <img
                       src={`/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top productcardimg"
+                      style={{ cursor: "pointer" }}
                       alt={p.name}
+                      onClick={()=>navigate(`/product/${p.slug}`)}
+                     
                     />
                     <div className="card-body">
                       <h5 className="card-title">{p.name}</h5>

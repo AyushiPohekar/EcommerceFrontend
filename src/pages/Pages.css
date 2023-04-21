@@ -129,3 +129,52 @@ margin-bottom: 2rem;
     margin: 1rem;
     width: 200px;
 }
+
+.productDetailContainer{
+ 
+  width: 100%;
+  
+ 
+}
+.productDetailRow{
+    margin: 3rem 5rem;
+   
+}
+.productDetailsCard{
+    width: 100%;
+    height: 50vh;
+}
+.productDetailsImg{
+    object-fit: contain;
+    width: 90%;
+    height: 80%;
+    margin-top: 2rem;
+}
+.productDetailsAboutDiv{
+    margin-top: 2rem;
+}
+.ProductDetailsbtn{
+    padding: 0.5rem 2rem;
+    background-color: #FB2576;
+    color: white;
+    border: none;
+    font-weight: 600;
+    width: 30%;
+}
+.productdetailsdivright{
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.productdetailsrightbottom{
+    display: flex;
+    gap:1rem;
+}
+.ProductDetailsSimilar{
+    background-color: rgb(245, 242, 242);
+    padding: 2rem 5rem;
+}
+.productdetailsCategories{
+    padding: 2rem 5rem;
+}
