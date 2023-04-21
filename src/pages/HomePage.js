@@ -15,7 +15,6 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-
   console.log(products);
   //get all category
   const getAllCategory = async () => {
@@ -30,6 +29,7 @@ const HomePage = () => {
   };
   useEffect(() => {
     getAllCategory();
+    getTotal();
   }, []);
 
   //get products
@@ -37,7 +37,7 @@ const HomePage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/get-product`
+        `http://localhost:8080/api/v1/product/product-list/${page}`
       );
       setLoading(false);
       setProducts(data.products);
@@ -50,8 +50,37 @@ const HomePage = () => {
     getAllProducts();
   }, []);
 
-   // filter by cat
-   const handleFilter = (value, id) => {
+  //getTOtal COunt
+  const getTotal = async () => {
+    try {
+      const { data } = await axios.get("/api/v1/product/product-count");
+      setTotal(data?.total);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (page === 1) return;
+    loadMore();
+  }, [page]);
+
+
+    //load more
+    const loadMore = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+        setLoading(false);
+        setProducts([...products, ...data?.products]);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    };
+  
+  // filter by cat
+  const handleFilter = (value, id) => {
     let all = [...checked];
     if (value) {
       all.push(id);
@@ -68,48 +97,55 @@ const HomePage = () => {
     if (checked.length || radio.length) filterProduct();
   }, [checked, radio]);
 
-    //get filterd product
-    const filterProduct = async () => {
-      try {
-        const { data } = await axios.post("/api/v1/product/product-filters", {
-          checked,
-          radio,
-        });
-        setProducts(data?.products);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  //get filterd product
+  const filterProduct = async () => {
+    try {
+      const { data } = await axios.post("/api/v1/product/product-filters", {
+        checked,
+        radio,
+      });
+      setProducts(data?.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Layout title={"Ecommerce"}>
       <div className="row mt-3">
-        <div className="col-md-3">
+        <div className="col-md-3 p-4">
           <h4> Filter By Category</h4>
           <div className="d-flex flex-column">
-          {categories?.map((c) => (
-            <Checkbox
-              key={c._id}
-              onChange={(e) => handleFilter(e.target.checked, c._id)}
-            >
-              {c.name}
-            </Checkbox>
-          ))}
-        </div>
-        {/* price filter */}
-        <h4 className="text-center mt-4">Filter By Price</h4>
-        <div className="d-flex flex-column">
-          <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-            {Prices?.map((p) => (
-              <div key={p._id}>
-                <Radio value={p.array}>{p.name}</Radio>
-              </div>
+            {categories?.map((c) => (
+              <Checkbox
+                key={c._id}
+                onChange={(e) => handleFilter(e.target.checked, c._id)}
+              >
+                {c.name}
+              </Checkbox>
             ))}
-          </Radio.Group>
-        </div>
+          </div>
+          {/* price filter */}
+          <h4 className="text-center mt-4">Filter By Price</h4>
+          <div className="d-flex flex-column">
+            <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+              {Prices?.map((p) => (
+                <div key={p._id}>
+                  <Radio value={p.array}>{p.name}</Radio>
+                </div>
+              ))}
+            </Radio.Group>
+          </div>
+          <div className="d-flex flex-column">
+            <button
+              className="btn btn-danger restbtn"
+              onClick={() => window.location.reload()}
+            >
+              RESET FILTERS
+            </button>
+          </div>
         </div>
         <div className="col-md-9 homepageproductlistdivright">
-        {JSON.stringify(radio,null,4)}
           <h1 className="text-center">All Products List</h1>
           <div className="d-flex flex-wrap homepageproductlist">
             {products?.map((p) => {
@@ -121,12 +157,16 @@ const HomePage = () => {
                     key={p._id}
                   >
                     <img
-                      src={`/api/v1/product/product-photo/&#x20B9;{p._id}`}
+                      src={`/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top productcardimg"
                       alt={p.name}
                     />
                     <div className="card-body">
                       <h5 className="card-title">{p.name}</h5>
+                      <p className="card-text ">
+                        {p.description.substring(0, 60)}...
+                      </p>
+
                       <div className="classbodydowndiv">
                         <p>&#x20B9;{p.price}</p>
                         <button className="addtocartbtn">Add to Cart</button>
@@ -137,7 +177,19 @@ const HomePage = () => {
               );
             })}
           </div>
-          
+          <div className="m-2 p-3">
+            {products && products.length < total && (
+              <button
+                className="btn btn-warning"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPage(page + 1);
+                }}
+              >
+                {loading ? "Loading..." : "Load more"}
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </Layout>
