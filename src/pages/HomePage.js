@@ -5,9 +5,13 @@ import { Checkbox, Radio } from "antd";
 import axios from "axios";
 import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../components/Context/cart";
+import { toast } from "react-hot-toast";
 
 const HomePage = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+  const [cart, setCart] = useCart();
+
   const [auth, setAuth] = useAuth();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -18,8 +22,6 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
 
   console.log(products);
-
-
 
   //get all category
   const getAllCategory = async () => {
@@ -70,20 +72,19 @@ const HomePage = () => {
     loadMore();
   }, [page]);
 
+  //load more
+  const loadMore = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      setLoading(false);
+      setProducts([...products, ...data?.products]);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
 
-    //load more
-    const loadMore = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
-        setLoading(false);
-        setProducts([...products, ...data?.products]);
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-      }
-    };
-  
   // filter by cat
   const handleFilter = (value, id) => {
     let all = [...checked];
@@ -135,7 +136,7 @@ const HomePage = () => {
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((pr) => (
-                <div >
+                <div>
                   <Radio value={pr.array}>{pr.name}</Radio>
                 </div>
               ))}
@@ -160,15 +161,13 @@ const HomePage = () => {
                     className="card productcard"
                     style={{ width: "18rem" }}
                     key={p._id}
-                  
                   >
                     <img
                       src={`/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top productcardimg"
                       style={{ cursor: "pointer" }}
                       alt={p.name}
-                      onClick={()=>navigate(`/product/${p.slug}`)}
-                     
+                      onClick={() => navigate(`/product/${p.slug}`)}
                     />
                     <div className="card-body">
                       <h5 className="card-title">{p.name}</h5>
@@ -178,7 +177,19 @@ const HomePage = () => {
 
                       <div className="classbodydowndiv">
                         <p>&#x20B9;{p.price}</p>
-                        <button className="addtocartbtn">Add to Cart</button>
+                        <button
+                          className="addtocartbtn"
+                          onClick={() => {
+                            setCart([...cart, p]);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, p])
+                            );
+                            toast.success("Item Added to cart")
+                          }}
+                        >
+                          Add to Cart
+                        </button>
                       </div>
                     </div>
                   </div>

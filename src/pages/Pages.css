@@ -111,7 +111,7 @@
 }
 
 .homepageproductlist{
-    gap:1rem;
+    gap:2.5rem;
   
 padding-left: 2rem;
 margin-bottom: 2rem;
@@ -177,4 +177,28 @@ margin-bottom: 2rem;
 }
 .productdetailsCategories{
     padding: 2rem 5rem;
+}
+
+.cart{
+    background-color: rgb(246, 236, 246);
+    scrollbar-width :none; 
+   overflow-y: scroll;
+    height: 70vh;
+}
+
+.CartContainer{
+margin: 1rem auto;
+ width:60%;
+
+}
+.cartCard{
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    padding: 7px 2px;
+}
+.cartimg{
+    width:100px;
+    height: 100px;
+    object-fit: contain;
 }

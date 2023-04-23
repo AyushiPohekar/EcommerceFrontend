@@ -8,7 +8,14 @@
 #150050--darkblue
 #000000--black */
 
-
+.headerCart{
+    background-color: #FB2576;
+    color: white;
+    font-weight: 600;
+    width: 170px;
+    border-radius: 8px;
+   
+}
 
 
 /*********************************************Footer ****************************************************/
@@ -26,3 +33,5 @@
 .footerlinks a:hover{
     color:#c08eea ;
 }
+
+

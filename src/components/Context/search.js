@@ -1,15 +1,12 @@
-import { useState,  useContext, createContext } from "react";
+import { useState, useContext, createContext } from "react";
 
 const SearchContext = createContext();
 
 const SearchProvider = ({ children }) => {
   const [Search, setSearch] = useState({
-  keyword:"",
-  results:[],
+    keyword: "",
+    results: [],
   });
-
-  
-
 
   return (
     <SearchContext.Provider value={[Search, setSearch]}>
