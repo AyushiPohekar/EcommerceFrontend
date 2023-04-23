@@ -2,6 +2,11 @@ import React from 'react'
 import Layout from '../../components/Layout/Layout'
 import UserMenu from '../../components/Layout/UserMenu'
 const Profile = () => {
+  const[name,setName]=useState("");
+  const[email,setEmail]=useState("");
+  const[password,setPassword]=useState("");
+  const[phone,setPhone]=useState("");
+  const[address,setAddress]=useState("");
   return (
     <Layout title={'Dashboard-Profile'}>
     <div className='container-fluid UserDasboardContainer'>
