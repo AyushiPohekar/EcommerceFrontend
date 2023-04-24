@@ -3,6 +3,9 @@
     border-radius: 20px;
     height: 70vh;
    margin: 2rem 2rem;
+   scrollbar-width :none; 
+  
+   overflow-y: scroll;
 }
 
 .UserDasboardConlumnLeft{
@@ -11,6 +14,9 @@
     background-color: #3F0071;
     color: white;
     border-radius: 20px;
+}
+.UserDasboardConlumnRight{
+    padding-left: 7rem;
 }
 .UserlistGroup{
     background-color: #3F0071;
@@ -26,4 +32,8 @@
 .UserlistGroup::hover{
  
     border-radius: 5px;
+}
+
+.Allorderimg{
+    object-fit: contain;
 }
