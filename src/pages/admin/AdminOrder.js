@@ -46,7 +46,7 @@ const AdminOrders = () => {
   return (
     <Layout title={"All Orders Data"}>
       <div className="row dashboard">
-        <div className="col-md-3">
+        <div className="col-md-3 admindashboardorderleft">
           <AdminMenu />
         </div>
         <div className="col-md-9">
@@ -56,7 +56,7 @@ const AdminOrders = () => {
               <div className="border shadow">
                 <table className="table">
                   <thead>
-                    <tr>
+                    <tr className="bg-dark text-light">
                       <th scope="col">#</th>
                       <th scope="col">Status</th>
                       <th scope="col">Buyer</th>
@@ -94,7 +94,7 @@ const AdminOrders = () => {
                       <div className="col-md-4">
                         <img
                           src={`/api/v1/product/product-photo/${p._id}`}
-                          className="card-img-top"
+                          className="card-img-top ordertableimg"
                           alt={p.name}
                           width="100px"
                           height={"100px"}

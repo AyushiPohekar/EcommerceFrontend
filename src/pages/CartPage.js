@@ -152,7 +152,7 @@ const CartPage = () => {
               <div className="card"></div>
             </div>
             <div className="col-md-6 CartContainerRight">
-              <div className="card">
+              <div className="card CartContainerRightcard">
                 <p>Item Total:{totalPrice()}</p>
                 
                 {auth?.user?.address ? (

@@ -1,0 +1,11 @@
+.searchformdiv{
+    margin-right: 7px;
+    padding: 5px;
+}
+.searchformdiv form input{
+   
+    width: 400px;
+}
+.searchformdiv form button{
+    padding: 0.3px 15px;
+}

@@ -202,3 +202,47 @@ margin: 1rem auto;
     height: 100px;
     object-fit: contain;
 }
+
+.CartContainerRightcard{
+
+    padding: 0.6rem;
+}
+
+.AllCategoriesCard{
+    width: 180px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-shadow: -2px 1px 15px 0px rgba(203,186,245,1);
+-moz-box-shadow: -2px 1px 15px 0px rgba(203,186,245,1);
+box-shadow: -2px 1px 15px 0px rgba(203,186,245,1);
+cursor: pointer;
+}
+/* .AllCategoriesCard:hover{
+
+} */
+.AllCategoriesContainer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.AllCategoriesRow{
+ 
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.Filtercategorydiv{
+   
+    padding: 1rem;
+
+}
+.btn{
+    background-color: #FB2576;
+    color: white;
+}

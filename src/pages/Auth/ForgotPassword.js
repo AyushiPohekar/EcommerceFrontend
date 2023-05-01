@@ -3,6 +3,7 @@ import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import './Auth.css';
 // import "../../styles/AuthStyles.css";
 
 const ForgotPasssword = () => {
@@ -75,7 +76,7 @@ const ForgotPasssword = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary fpbtn">
             RESET
           </button>
         </form>

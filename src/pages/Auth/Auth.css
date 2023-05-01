@@ -1,0 +1,9 @@
+.form-container{
+    box-shadow: 0px 2px 6px 6px #f7eff2;
+    width: 50%;
+    margin: 1.5rem auto;
+    padding: 1rem;
+}
+.fpbtn{
+    width: 150px;
+}

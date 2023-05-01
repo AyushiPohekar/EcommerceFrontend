@@ -19,6 +19,7 @@ const CreateProduct = () => {
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
   const [photo, setPhoto] = useState("");
+  const [products, setProducts] = useState([]);
   //get all category
   const getAllCategory = async () => {
     try {
@@ -34,6 +35,22 @@ const CreateProduct = () => {
 
   useEffect(() => {
     getAllCategory();
+  }, []);
+
+  const getAllProducts = async () => {
+    try {
+      const { data } = await axios.get("/api/v1/product/get-product");
+      setProducts(data.products);
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  //lifeCycle method
+
+  useEffect(() => {
+    getAllProducts();
   }, []);
 
  //create product function
@@ -59,6 +76,8 @@ const CreateProduct = () => {
     } else {
       toast.success("Product Created Successfully");
       navigate("/dashboard/admin/products");
+      getAllProducts();
+      
     }
   } catch (error) {
     console.log(error);

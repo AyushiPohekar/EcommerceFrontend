@@ -119,21 +119,24 @@ const HomePage = () => {
   return (
     <Layout title={"Ecommerce"}>
       <div className="row mt-3">
-        <div className="col-md-3 p-4">
-          <h4> Filter By Category</h4>
-          <div className="d-flex flex-column">
+        <div className="col-md-3 p-4 Filterdiv">
+          <h4 className="p-2"> Filter By Category</h4>
+          <div className="d-flex flex-column Filtercategorydiv">
+          
             {categories?.map((c) => (
+               <div>
               <Checkbox
                 key={c._id}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
               >
                 {c.name}
               </Checkbox>
+              </div>
             ))}
           </div>
           {/* price filter */}
-          <h4 className="text-center mt-4">Filter By Price</h4>
-          <div className="d-flex flex-column">
+          <h4 className=" p-2 mt-4">Filter By Price</h4>
+          <div className="d-flex flex-column Filtercategorydiv">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((pr) => (
                 <div>
@@ -144,7 +147,7 @@ const HomePage = () => {
           </div>
           <div className="d-flex flex-column">
             <button
-              className="btn btn-danger restbtn"
+              className="btn  restbtn"
               onClick={() => window.location.reload()}
             >
               RESET FILTERS

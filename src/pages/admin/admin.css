@@ -76,4 +76,16 @@ margin-left: 3rem;
     padding-top: 1rem;
     cursor:'pointer'
 }
+
+.dashboard{
+  
+    padding: 1rem;
+}
+.admindashboardorderleft{
+  
+    padding: 1rem;
+}
+.ordertableimg{
+    object-fit: contain;
+}
   

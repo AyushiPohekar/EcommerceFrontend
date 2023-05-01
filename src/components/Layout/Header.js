@@ -8,6 +8,7 @@ import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../Context/cart";
 import { Badge } from "antd";
+import { BiCart } from "react-icons/bi";
 
 
 const Header = () => {
@@ -42,11 +43,11 @@ const Header = () => {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <div className="collapse navbar-collapse " id="navbarTogglerDemo01">
             <Link to={"/"} className="navbar-brand headerlinks">
               <RiShoppingBag3Fill /> YourShop
             </Link>
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 leftnav">
               <SearchInput />
               <li className="nav-item">
                 <NavLink to={"/"} className="nav-link  headerlinks">
@@ -131,11 +132,11 @@ const Header = () => {
                   </li>
                 </>
               )}
-              <li className="nav-item">
+              <li className="nav-item cartl">
                  <NavLink to={"/cart"} className="nav-link headerlinks headerCart">
                 {/* 🛒{cart?.length===0?(<>My Cart</>):(<>| <div><p>{cart?.length}items</p></div></>)} */}
                 <Badge count={cart?.length} showZero offset={[10, -5]}>
-                    Cart
+                    <BiCart className="cartsym"/>
                   </Badge>
                 </NavLink> 
             
