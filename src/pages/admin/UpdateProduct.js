@@ -73,7 +73,7 @@ const UpdateProduct = () => {
       photo && productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.put(
-        `http://localhost:8080/api/v1/product/update-product/${id}`,
+        `/api/v1/product/update-product/${id}`,
         productData
       );
       console.log(data)

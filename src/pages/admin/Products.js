@@ -4,7 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { Link } from "react-router-dom";
-const API="http://localhost:8080"
+
 const Products = () => {
   const [products, setProducts] = useState([]);
   console.log(products);

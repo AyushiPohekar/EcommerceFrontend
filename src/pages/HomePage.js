@@ -44,7 +44,7 @@ const HomePage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/product-list/${page}`
+        `/api/v1/product/product-list/${page}`
       );
       setLoading(false);
       setProducts(data.products);

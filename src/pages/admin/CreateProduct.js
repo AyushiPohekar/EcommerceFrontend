@@ -67,7 +67,7 @@ const CreateProduct = () => {
     productData.append("category", category);
   
     const { data } = axios.post(
-      "http://localhost:8080/api/v1/product/create-product",
+      "/api/v1/product/create-product",
       productData
     );
    
