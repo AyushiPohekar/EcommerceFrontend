@@ -5,6 +5,7 @@ import { useAuth } from "../../components/Context/auth";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API } from "../../global";
 
 const Profile = () => {
   const [name, setName] = useState("");
@@ -32,7 +33,7 @@ const Profile = () => {
     console.log(name, email, password, phone, address);
 
     try {
-      const { data } = await axios.put("/api/v1/auth/profile", {
+      const { data } = await axios.put(`${API}/api/v1/auth/profile`, {
         name,
         email,
         password,

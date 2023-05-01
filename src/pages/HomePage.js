@@ -7,6 +7,7 @@ import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../components/Context/cart";
 import { toast } from "react-hot-toast";
+import { API } from "../global";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const HomePage = () => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/getallcategory");
+      const { data } = await axios.get(`${API}/api/v1/category/getallcategory`);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -44,7 +45,7 @@ const HomePage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `/api/v1/product/product-list/${page}`
+        `${API}/api/v1/product/product-list/${page}`
       );
       setLoading(false);
       setProducts(data.products);
@@ -60,7 +61,7 @@ const HomePage = () => {
   //getTOtal COunt
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await axios.get(`${API}/api/v1/product/product-count`);
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -76,7 +77,7 @@ const HomePage = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${API}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts([...products, ...data?.products]);
     } catch (error) {
@@ -106,7 +107,7 @@ const HomePage = () => {
   //get filterd product
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post("/api/v1/product/product-filters", {
+      const { data } = await axios.post(`${API}/api/v1/product/product-filters`, {
         checked,
         radio,
       });
@@ -166,7 +167,7 @@ const HomePage = () => {
                     key={p._id}
                   >
                     <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
+                      src={`${API}/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top productcardimg"
                       style={{ cursor: "pointer" }}
                       alt={p.name}

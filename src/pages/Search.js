@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
 import { useSearch } from "../components/Context/search";
+import { API } from "../global";
 
 const Search = () => {
   const [values, setValues] = useSearch();
@@ -25,7 +26,7 @@ const Search = () => {
                     key={p._id}
                   >
                     <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
+                      src={`${API}/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top productcardimg"
                       alt={p.name}
                     />

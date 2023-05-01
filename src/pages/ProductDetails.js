@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { API } from "../global";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -14,7 +15,7 @@ const [relatedProducts,setRelatedProducts]=useState([])
   const getProductDetails = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/get-product/${params.slug}`
+        `${API}/api/v1/product/get-product/${params.slug}`
       );
       setProduct(data?.product);
       getSimilarProduct(data?.product._id, data?.product.category._id);
@@ -29,7 +30,7 @@ const [relatedProducts,setRelatedProducts]=useState([])
 const getSimilarProduct = async (pid, cid) => {
   try {
     const { data } = await axios.get(
-      `/api/v1/product/related-product/${pid}/${cid}`
+      `${API}/api/v1/product/related-product/${pid}/${cid}`
     );
     setRelatedProducts(data?.products);
   } catch (error) {
@@ -44,7 +45,7 @@ const getSimilarProduct = async (pid, cid) => {
           <div className="col-md-6">
             <div className="card productDetailsCard">
               <img
-                src={`/api/v1/product/product-photo/${product._id}`}
+                src={`${API}/api/v1/product/product-photo/${product._id}`}
                 className="card-img-top productDetailsImg "
                 alt={product.name}
               />
@@ -102,7 +103,7 @@ const getSimilarProduct = async (pid, cid) => {
             
             >
               <img
-                src={`/api/v1/product/product-photo/${p._id}`}
+                src={`${API}/api/v1/product/product-photo/${p._id}`}
                 className="card-img-top productcardimg"
                 style={{ cursor: "pointer" }}
                 alt={p.name}

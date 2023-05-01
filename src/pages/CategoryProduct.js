@@ -3,6 +3,7 @@ import Layout from "../components/Layout/Layout";
 import { useParams, useNavigate } from "react-router-dom";
 
 import axios from "axios";
+import { API } from "../global";
 const CategoryProduct = () => {
   const params = useParams();
   console.log(params.id)
@@ -16,7 +17,7 @@ const CategoryProduct = () => {
   const getPrductsByCat = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/product-category/${params.id}`
+        `${API}/api/v1/product/product-category/${params.id}`
       );
       setProducts(data?.products);
       setCategory(data?.category);
@@ -36,7 +37,7 @@ const CategoryProduct = () => {
               {products?.map((p) => (
                 <div className="card m-2 productcard" key={p._id} style={{ width: "18rem" }}>
                   <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`${API}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top productcardimg"
                     alt={p.name}
                     style={{ cursor: "pointer" }}

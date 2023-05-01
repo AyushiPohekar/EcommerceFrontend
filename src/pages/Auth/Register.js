@@ -4,6 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import {  toast } from 'react-toastify';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API } from "../../global";
 
 
 const Register = () => {
@@ -20,7 +21,7 @@ const Register = () => {
    console.log(name,email,password,phone,address,answer);
 
    try {
-    const res = await axios.post("/api/v1/auth/register", {
+    const res = await axios.post(`${API}/api/v1/auth/register`, {
       name,
       email,
       password,
