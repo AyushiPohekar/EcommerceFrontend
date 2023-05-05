@@ -6,7 +6,7 @@ import axios from "axios";
 import { useNavigate,useLocation } from "react-router-dom";
 import { useAuth } from "../../components/Context/auth";
 import { API } from "../../global";
-import { toast } from "react-toast";
+import { toast } from "react-toastify";
 
 
 const Login = () => {

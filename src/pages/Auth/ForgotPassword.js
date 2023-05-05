@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-//import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import './Auth.css';
 import { API } from "../../global";
-import { toast } from "react-toast";
-// import "../../styles/AuthStyles.css";
+
+
 
 const ForgotPasssword = () => {
   const [email, setEmail] = useState("");

@@ -7,7 +7,7 @@ import axios from "axios";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../global";
-import { toast } from "react-toast";
+import { toast } from "react-toastify";
 
 const { Option } = Select;
 
@@ -76,7 +76,10 @@ const CreateProduct = () => {
     if (data?.success) {
       toast.error(data?.message);
     } else {
-      toast.success("Product Created Successfully");
+      setTimeout(()=>{
+        toast.success("Product Created Successfully");
+      },3000)
+      
       navigate("/dashboard/admin/products");
       getAllProducts();
       

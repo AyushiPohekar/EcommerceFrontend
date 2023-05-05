@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import AdminMenu from "../../components/Layout/AdminMenu";
-import { ToastContainer, toast } from "react-toast";
+import {  toast } from "react-toastify";
 import axios from "axios";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal } from "antd";
@@ -173,7 +173,7 @@ const CreateCategory = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
+   
     </Layout>
   );
 };

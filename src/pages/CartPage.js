@@ -7,7 +7,7 @@ import DropIn from "braintree-web-drop-in-react";
 import axios from "axios";
 
 import { API } from "../global";
-import { ToastContainer, toast } from "react-toast";
+import { ToastContainer, toast } from "react-toastify";
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();

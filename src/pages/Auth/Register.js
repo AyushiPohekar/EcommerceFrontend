@@ -5,7 +5,7 @@ import Layout from "../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../global";
-import { toast } from "react-toast";
+import { toast } from "react-toastify";
 
 
 const Register = () => {

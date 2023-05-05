@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../components/Context/cart";
 
 import { API } from "../global";
-import { ToastContainer, toast } from "react-toast";
+import {  toast } from "react-toastify";
 
 const HomePage = () => {
   const navigate = useNavigate();

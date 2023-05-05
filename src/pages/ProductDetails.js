@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { API } from "../global";
 import { useCart } from "../components/Context/cart";
-import { ToastContainer, toast } from "react-toast";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProductDetails = () => {
   const [cart, setCart] = useCart();
