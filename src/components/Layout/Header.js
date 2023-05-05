@@ -3,12 +3,13 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Layout.css";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { useAuth } from "../Context/auth";
-import { toast } from "react-toastify";
+//import { toast } from "react-toastify";
 import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../Context/cart";
 import { Badge } from "antd";
 import { BiCart } from "react-icons/bi";
+import { toast } from "react-toast";
 
 
 const Header = () => {

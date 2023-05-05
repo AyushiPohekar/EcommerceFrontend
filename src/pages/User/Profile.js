@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import UserMenu from "../../components/Layout/UserMenu";
 import { useAuth } from "../../components/Context/auth";
-import { toast } from "react-hot-toast";
+//import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../global";
+import { toast } from "react-toast";
 
 const Profile = () => {
   const [name, setName] = useState("");

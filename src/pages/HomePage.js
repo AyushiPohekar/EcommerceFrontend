@@ -6,8 +6,9 @@ import axios from "axios";
 import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../components/Context/cart";
-import { toast } from "react-hot-toast";
+
 import { API } from "../global";
+import { ToastContainer, toast } from "react-toast";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -216,6 +217,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      {/* <ToastContainer /> */}
     </Layout>
   );
 };

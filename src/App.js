@@ -27,6 +27,7 @@ import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import CartPage from "./pages/CartPage";
 import AdminOrders from "./pages/admin/AdminOrder";
+import { ToastContainer } from "react-toast";
 
 
 function App(){
@@ -64,7 +65,7 @@ function App(){
     
     
     </Routes>
-    
+    <ToastContainer delay={3000} />
     </>
   );
 }

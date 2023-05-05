@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "../Pages.css";
 import Layout from "../../components/Layout/Layout";
-import { toast } from "react-toastify";
+//import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate,useLocation } from "react-router-dom";
 import { useAuth } from "../../components/Context/auth";
 import { API } from "../../global";
+import { toast } from "react-toast";
 
 
 const Login = () => {

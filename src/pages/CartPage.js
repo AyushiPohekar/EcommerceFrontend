@@ -5,8 +5,9 @@ import { useAuth } from "../components/Context/auth";
 import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+
 import { API } from "../global";
+import { ToastContainer, toast } from "react-toast";
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
@@ -59,6 +60,7 @@ const CartPage = () => {
   const getToken = async () => {
     try {
       const { data } = await axios.get(`${API}/api/v1/product/braintree/token`);
+      console.log(data)
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -225,6 +227,7 @@ const CartPage = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </Layout>
   );
 };

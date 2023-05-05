@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import Layout from "../../components/Layout/Layout";
 import "./admin.css";
-import toast from "react-hot-toast";
+
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../global";
+import { toast } from "react-toast";
 
 const { Option } = Select;
 

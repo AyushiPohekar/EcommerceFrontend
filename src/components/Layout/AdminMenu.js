@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom'
 import '../../pages/admin/admin.css';
-import { Toast } from 'react-hot-toast';
+//import { Toast } from 'react-hot-toast';
 const AdminMenu = () => {
   const navigate=useNavigate();
 

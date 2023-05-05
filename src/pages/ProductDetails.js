@@ -3,8 +3,11 @@ import Layout from "../components/Layout/Layout";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { API } from "../global";
+import { useCart } from "../components/Context/cart";
+import { ToastContainer, toast } from "react-toast";
 
 const ProductDetails = () => {
+  const [cart, setCart] = useCart();
   const params = useParams();
 
   const [product, setProduct] = useState({});
@@ -61,7 +64,14 @@ const getSimilarProduct = async (pid, cid) => {
             <h3>{product.name}</h3>
             <h3>₹ {product.price}</h3>
            
-            <button className="btn ProductDetailsbtn">Add to Cart</button>
+            <button className="btn ProductDetailsbtn" onClick={() => {
+                            setCart([...cart, product]);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, product])
+                            );
+                            toast.success("Item Added to cart")
+                          }}>Add to Cart</button>
             <hr />
             <h4>How it works</h4>
             <div className="productdetailsrightbottom">
@@ -117,7 +127,14 @@ const getSimilarProduct = async (pid, cid) => {
 
                 <div className="classbodydowndiv">
                   <p>&#x20B9;{p.price}</p>
-                  <button className="addtocartbtn">Add to Cart</button>
+                  <button className="addtocartbtn" onClick={() => {
+                            setCart([...cart, p]);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, p])
+                            );
+                            toast.success("Item Added to cart")
+                          }} >Add to Cart</button>
                 </div>
               </div>
             </div>
@@ -128,7 +145,7 @@ const getSimilarProduct = async (pid, cid) => {
 
       
       </div>
-     
+      <ToastContainer />
     </Layout>
   );
 };

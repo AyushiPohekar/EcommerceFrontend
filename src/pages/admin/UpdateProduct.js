@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "./../../components/Layout/AdminMenu";
-import toast from "react-hot-toast";
+
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { API } from "../../global";
+import { toast } from "react-toast";
 const { Option } = Select;
 
 const UpdateProduct = () => {

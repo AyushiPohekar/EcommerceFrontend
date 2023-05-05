@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import Layout from "../../components/Layout/Layout";
-import { toast } from "react-hot-toast";
+
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API } from "../../global";
+import { toast } from "react-toast";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
