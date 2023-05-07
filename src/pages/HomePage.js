@@ -9,11 +9,14 @@ import { useCart } from "../components/Context/cart";
 
 import { API } from "../global";
 import {  toast } from "react-toastify";
+import { useLoading } from "../components/Context/loading";
+
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
-
+   const [loaddata,setLoadData]=useLoading();
+   console.log(loaddata)
   const [auth, setAuth] = useAuth();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -50,6 +53,7 @@ const HomePage = () => {
       );
       setLoading(false);
       setProducts(data.products);
+      setLoadData(true);
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -158,50 +162,54 @@ const HomePage = () => {
         </div>
         <div className="col-md-9 homepageproductlistdivright">
           <h1 className="text-center">All Products List</h1>
+        {!loaddata?(
+        <div>Data is Loading..Please wait.</div>
+        ):(
           <div className="d-flex flex-wrap homepageproductlist">
-            {products?.map((p) => {
-              return (
-                <>
-                  <div
-                    className="card productcard"
-                    style={{ width: "18rem" }}
-                    key={p._id}
-                  >
-                    <img
-                      src={`${API}/api/v1/product/product-photo/${p._id}`}
-                      className="card-img-top productcardimg"
-                      style={{ cursor: "pointer" }}
-                      alt={p.name}
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">{p.name}</h5>
-                      <p className="card-text ">
-                        {p.description.substring(0, 60)}...
-                      </p>
+          {products?.map((p) => {
+            return (
+              <>
+                <div
+                  className="card productcard"
+                  style={{ width: "18rem" }}
+                  key={p._id}
+                >
+                  <img
+                    src={`${API}/api/v1/product/product-photo/${p._id}`}
+                    className="card-img-top productcardimg"
+                    style={{ cursor: "pointer" }}
+                    alt={p.name}
+                    onClick={() => navigate(`/product/${p.slug}`)}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{p.name}</h5>
+                    <p className="card-text ">
+                      {p.description.substring(0, 60)}...
+                    </p>
 
-                      <div className="classbodydowndiv">
-                        <p>&#x20B9;{p.price}</p>
-                        <button
-                          className="addtocartbtn"
-                          onClick={() => {
-                            setCart([...cart, p]);
-                            localStorage.setItem(
-                              "cart",
-                              JSON.stringify([...cart, p])
-                            );
-                            toast.success("Item Added to cart")
-                          }}
-                        >
-                          Add to Cart
-                        </button>
-                      </div>
+                    <div className="classbodydowndiv">
+                      <p>&#x20B9;{p.price}</p>
+                      <button
+                        className="addtocartbtn"
+                        onClick={() => {
+                          setCart([...cart, p]);
+                          localStorage.setItem(
+                            "cart",
+                            JSON.stringify([...cart, p])
+                          );
+                          toast.success("Item Added to cart")
+                        }}
+                      >
+                        Add to Cart
+                      </button>
                     </div>
                   </div>
-                </>
-              );
-            })}
-          </div>
+                </div>
+              </>
+            );
+          })}
+        </div>
+        )}
           <div className="m-2 p-3">
             {products && products.length < total && (
               <button
